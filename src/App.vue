@@ -2,8 +2,10 @@
 import { ref } from 'vue'
 import SelectGrade from './components/SelectGrade.vue'
 import SelectVariant from './components/SelectVariant.vue'
+import ButtonLightDark from './components/ButtonLightDark.vue'
 
 import { Calculation } from './assets/js/Calculation.js'
+
 const calc = new Calculation()
 
 const gradeRating1 = ref()
@@ -24,21 +26,9 @@ const factorWrittenThesis = ref()
 const factorDefense = ref()
 const factorDivisor = ref()
 
-const isDarkMode = ref()
-
 init()
 
 function init() {
-  // Uses dark mode if this is preferred in the browser settings.
-  // Default is light mode.
-  //
-  // TODO: Use dark mode like:
-  //       - https://tailwindcss.com/docs/dark-mode#supporting-system-preference-and-manual-selection
-  //
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    toggleColorScheme()
-  }
-
   // Resets to initial values.
   reset()
 }
@@ -83,11 +73,6 @@ function checkInputVariant(variant) {
   const variants = [1, 2]
   return variants.includes(variant) ? variant : variants[0]
 }
-
-function toggleColorScheme() {
-  const element = document.querySelector('html')
-  element.classList.toggle('dark')
-}
 </script>
 
 <template>
@@ -98,13 +83,7 @@ function toggleColorScheme() {
         <template #start> Bewertung Abschlussarbeit </template>
         <template #end>
           <div class="flex items-center gap-2">
-            <Button
-              id="darkModeButton"
-              icon="pi pi-sun"
-              aria-label="Toggle dark mode"
-              @click="toggleColorScheme"
-              text
-            />
+            <ButtonLightDark />
             <Button @click="reset" icon="pi pi-refresh" aria-label="Reset" text />
           </div>
         </template>
