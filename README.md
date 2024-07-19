@@ -16,6 +16,15 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
+### Upgrade dependencies
+
+```sh
+npm outdated
+npm update
+npm update --save-dev
+npm update --save
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh
@@ -40,3 +49,7 @@ npm run lint
 npm run test
 npm test
 ```
+
+## Notes
+
+- <https://vueschool.io/articles/vuejs-tutorials/master-tailwindcss-4-for-vue/>

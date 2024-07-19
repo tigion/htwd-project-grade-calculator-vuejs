@@ -1,12 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, defineExpose } from 'vue'
 
 const lightIconClasses = 'pi pi-sun'
 const darkIconClasses = 'pi pi-moon'
 
 // Uses dark mode if this is preferred in the browser settings.
 // Default is light mode.
-let isDarkMode = isBrowserDarkMode()
+// let isDarkMode = isBrowserDarkMode()
+let isDarkMode = defineModel() // to expose the state to parent
+isDarkMode.value = isBrowserDarkMode()
 
 const icon = ref()
 
@@ -15,7 +17,7 @@ function isBrowserDarkMode() {
 }
 
 function setColorScheme() {
-  if (isDarkMode) {
+  if (isDarkMode.value) {
     icon.value = darkIconClasses
     document.documentElement.classList.add('dark')
   } else {
@@ -25,7 +27,7 @@ function setColorScheme() {
 }
 
 function toggleColorScheme() {
-  isDarkMode = !isDarkMode
+  isDarkMode.value = !isDarkMode.value
   setColorScheme()
 }
 

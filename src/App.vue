@@ -26,6 +26,8 @@ const factorWrittenThesis = ref()
 const factorDefense = ref()
 const factorDivisor = ref()
 
+const buttonToggleDarkMode = ref()
+
 init()
 
 function init() {
@@ -83,7 +85,8 @@ function checkInputVariant(variant) {
         <template #start> Bewertung Abschlussarbeit </template>
         <template #end>
           <div class="flex items-center gap-2">
-            <ButtonLightDark />
+            <p>{{ buttonToggleDarkMode }}</p>
+            <ButtonLightDark v-model="buttonToggleDarkMode" />
             <Button @click="reset" icon="pi pi-refresh" aria-label="Reset" text />
           </div>
         </template>
