@@ -1,5 +1,6 @@
 <script setup>
-import { ref, defineExpose } from 'vue'
+import { ref } from 'vue'
+// import { ref, defineExpose } from 'vue'
 
 const lightIconClasses = 'pi pi-sun'
 const darkIconClasses = 'pi pi-moon'
@@ -7,7 +8,7 @@ const darkIconClasses = 'pi pi-moon'
 // Uses dark mode if this is preferred in the browser settings.
 // Default is light mode.
 // let isDarkMode = isBrowserDarkMode()
-let isDarkMode = defineModel() // to expose the state to parent
+let isDarkMode = defineModel({ type: Boolean }) // to expose the state to parent
 isDarkMode.value = isBrowserDarkMode()
 
 const icon = ref()
@@ -54,7 +55,12 @@ setColorScheme()
 </script>
 
 <template>
-  <Button :icon="icon" aria-label="Toggle light/dark mode" @click="toggleColorScheme" text />
+  <Button
+    :icon="icon"
+    aria-label="Toggle light/dark mode"
+    text
+    @click="toggleColorScheme"
+  />
 </template>
 
 <style scoped></style>

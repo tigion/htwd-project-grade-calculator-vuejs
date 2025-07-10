@@ -22,11 +22,11 @@ function getInputGrades() {
   <Select
     v-model="selectedGrade"
     :options="grades"
-    optionLabel="name"
-    optionValue="value"
+    option-label="name"
+    option-value="value"
     placeholder="Select a Grade"
     checkmark
-    :highlightOnSelect="false"
+    :highlight-on-select="false"
     class="w-full h-fit"
   />
 </template>

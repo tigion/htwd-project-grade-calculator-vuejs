@@ -19,25 +19,28 @@ function add() {
     <!-- <input type="number" v-model="number1" /> -->
     <!-- <input type="number" v-model="number2" /> -->
     <InputNumber
-      @change="add"
       v-model="number1"
-      inputId="minmax-buttons"
+      input-id="minmax-buttons"
       mode="decimal"
-      showButtons
+      show-buttons
       :min="-1000"
       :max="1000"
+      @change="add"
     />
     <InputNumber
       v-model="number2"
-      inputId="minmax-buttons"
+      input-id="minmax-buttons"
       mode="decimal"
-      showButtons
+      show-buttons
       :min="-1000"
       :max="1000"
     />
 
     <!-- <button type="submit">Add</button> -->
-    <Button type="submit" label="Add" />
+    <Button
+      type="submit"
+      label="Add"
+    />
   </form>
   <p>Result: {{ result }}</p>
 </template>

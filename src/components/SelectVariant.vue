@@ -13,11 +13,11 @@ const selectedVariant = ref()
   <Select
     v-model="selectedVariant"
     :options="variants"
-    optionLabel="name"
-    optionValue="value"
+    option-label="name"
+    option-value="value"
     placeholder="Select a Variant"
     checkmark
-    :highlightOnSelect="false"
+    :highlight-on-select="false"
     class="w-full h-fit"
   />
 </template>
