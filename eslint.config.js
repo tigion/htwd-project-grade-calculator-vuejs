@@ -1,60 +1,45 @@
-import globals from 'globals'
-import pluginJs from '@eslint/js'
-
-// export default [
-//   {
-//     languageOptions: {
-//       globals: {
-//         ...globals.browser
-//         // ...globals.commonjs,
-//         // ...globals.node,
-//       }
-//       // ecmaVersion: 12,
-//       // sourceType: "commonjs",
-//     }
-//   },
-//
-//   pluginJs.configs.recommended,
-//
-//   {
-//     rules: {
-//       'no-unused-vars': 'warn',
-//       'no-undef': 'warn'
-//     }
-//   }
-// ]
-
 import { defineConfig } from 'eslint/config'
-import { includeIgnoreFile } from '@eslint/compat'
-import { fileURLToPath } from 'node:url'
+import js from '@eslint/js'
+import globals from 'globals'
 import eslintPluginVue from 'eslint-plugin-vue'
-
-const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
 
 export default defineConfig([
-  includeIgnoreFile(gitignorePath, 'Imported .gitignore patterns'),
   {
-    extends: [
-      // ...tseslint.configs.recommended,
-      ...eslintPluginVue.configs['flat/recommended']
-    ],
+    files: ['**/*.{js,mjs,cjs,vue}'],
+    plugins: { js },
+    extends: ['js/recommended']
+  },
+  {
+    files: ['**/*.js'],
     languageOptions: {
-      globals: {
-        ...globals.browser
-        // ...globals.commonjs,
-        // ...globals.node,
-      }
-      // ecmaVersion: 12
-      // sourceType: "commonjs",
+      sourceType: 'commonjs'
+    }
+  },
+  {
+    files: ['**/*.{js,mjs,cjs,vue}'],
+    languageOptions: {
+      globals: globals.browser
     }
   },
 
-  pluginJs.configs.recommended,
+  // Adds support for Vue.js.
+  // - https://github.com/vuejs/eslint-plugin-vue
+  eslintPluginVue.configs['flat/recommended'],
 
+  // Disables all rules that conflict with Prettier.
+  // - https://github.com/prettier/eslint-config-prettier
+  // Use ESLint only for linting and Prettier for formatting.
+  // - https://prettier.io/docs/comparison
+  eslintConfigPrettier,
+
+  // Overrides for specific rules.
   {
     rules: {
       'no-unused-vars': 'warn',
       'no-undef': 'warn'
+      // 'vue/multi-word-component-names': 'off',
+      // 'vue/no-reserved-component-names': 'off'
     }
   }
 ])
