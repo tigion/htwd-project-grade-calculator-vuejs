@@ -9,16 +9,25 @@ const darkIconClasses = 'pi pi-moon'
 // Default is light mode.
 // let isDarkMode = isBrowserDarkMode()
 let isDarkMode = defineModel({ type: Boolean }) // to expose the state to parent
-isDarkMode.value = isBrowserDarkMode()
 
 const icon = ref()
 
 function isBrowserDarkMode() {
   return window.matchMedia('(prefers-color-scheme: dark)').matches
 }
+console.log('isDarkMode', isDarkMode.value)
 
 function setColorScheme() {
-  if (isDarkMode.value) {
+  let isDarkMode2
+  if (isDarkMode.value == null) {
+    isDarkMode2 = isBrowserDarkMode()
+    isDarkMode.value = isBrowserDarkMode()
+  } else {
+    isDarkMode2 = isDarkMode.value
+  }
+  console.log('isDarkMode2:', isDarkMode2)
+  if (isDarkMode2) {
+    // if (isDarkMode.value == false) {
     icon.value = darkIconClasses
     document.documentElement.classList.add('dark')
   } else {
@@ -28,7 +37,9 @@ function setColorScheme() {
 }
 
 function toggleColorScheme() {
+  console.log('isDarkMode 1:', isDarkMode.value)
   isDarkMode.value = !isDarkMode.value
+  console.log('isDarkMode 2:', isDarkMode.value)
   setColorScheme()
 }
 
@@ -55,12 +66,7 @@ setColorScheme()
 </script>
 
 <template>
-  <Button
-    :icon="icon"
-    aria-label="Toggle light/dark mode"
-    text
-    @click="toggleColorScheme"
-  />
+  <Button :icon="icon" aria-label="Toggle light/dark mode" text @click="toggleColorScheme" />
 </template>
 
 <style scoped></style>
