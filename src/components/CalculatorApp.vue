@@ -37,10 +37,7 @@ function add() {
     />
 
     <!-- <button type="submit">Add</button> -->
-    <Button
-      type="submit"
-      label="Add"
-    />
+    <Button type="submit" label="Add" />
   </form>
   <p>Result: {{ result }}</p>
 </template>

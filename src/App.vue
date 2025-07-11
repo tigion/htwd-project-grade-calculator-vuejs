@@ -158,7 +158,6 @@ function checkInputVariant(variant) {
       <div class="flex flex-row flex-grow items-end mx-4">
         <SelectVariant v-model="calcVariant" @change="update" />
       </div>
-
       <div class="flex flex-row mx-4">
         <p class="basis-full text-xs text-gray-500/50 mb-2">
           Notenrechner auf
