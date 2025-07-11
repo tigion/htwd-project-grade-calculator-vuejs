@@ -19,8 +19,7 @@ export class Grade {
   }
 
   get valueShort() {
-    const factor = Grade.precisionFactor / Grade.shortPrecisionFactor
-    return parseInt(this.value / factor) * factor
+    return this.convertToShort(this.value)
   }
   get valueAsString() {
     return this.convertToString(this.value, false)
@@ -29,10 +28,27 @@ export class Grade {
     return this.convertToString(this.value)
   }
 
+  convertToShort(value) {
+    const factor = Grade.precisionFactor / Grade.shortPrecisionFactor
+    return parseInt(value / factor) * factor
+  }
+
   convertToString(value, isShort = true) {
-    const sValue = value > 0 ? value.toString() : '0'.repeat(Grade.precisionDigits + 1)
-    const integerPart = sValue[0]
-    const fractionalPart = isShort ? sValue[1] : sValue.slice(1)
+    const sValue = value.toString()
+    let integerPart = '0'
+    let fractionalPart
+
+    if (sValue.length > Grade.precisionDigits) {
+      integerPart = sValue.slice(0, sValue.length - Grade.precisionDigits)
+      fractionalPart = sValue.slice(sValue.length - Grade.precisionDigits)
+    } else {
+      fractionalPart = '0'.repeat(Grade.precisionDigits - sValue.length) + sValue
+    }
+
+    if (isShort) {
+      fractionalPart = fractionalPart.slice(0, Grade.shortPrecisionDigits)
+    }
+
     return integerPart + Grade.decimalSeparator + fractionalPart
   }
 
