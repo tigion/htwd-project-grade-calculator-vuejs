@@ -24,7 +24,11 @@ describe('class Grade', () => {
   })
 
   test('valueShort()', () => {
-    const grade = new Grade(2345)
+    let grade = new Grade(2299)
+    expect(grade.valueShort).toBe(2200)
+    grade = new Grade(2300)
+    expect(grade.valueShort).toBe(2300)
+    grade = new Grade(2399)
     expect(grade.valueShort).toBe(2300)
   })
 

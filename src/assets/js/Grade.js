@@ -1,6 +1,8 @@
 export class Grade {
   static precisionDigits = 3
   static precisionFactor = Math.pow(10, Grade.precisionDigits)
+  static shortPrecisionDigits = 1
+  static shortPrecisionFactor = Math.pow(10, Grade.shortPrecisionDigits)
   static decimalSeparator = ','
 
   constructor(value = 0) {
@@ -17,7 +19,8 @@ export class Grade {
   }
 
   get valueShort() {
-    return parseInt(this.value / (Grade.precisionFactor / 10)) * (Grade.precisionFactor / 10)
+    const factor = Grade.precisionFactor / Grade.shortPrecisionFactor
+    return parseInt(this.value / factor) * factor
   }
   get valueAsString() {
     return this.convertToString(this.value, false)
