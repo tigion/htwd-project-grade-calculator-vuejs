@@ -108,7 +108,7 @@ export class Calculation {
     }
 
     this.gradeThesis.value = parseInt(result)
-    this.gradeThesisAsText = this.getGradeAsText(this.gradeThesis.value)
+    this.gradeThesisAsText = this.getGradeAsText(this.gradeThesis.valueShort)
   }
 
   getGradeAsText(grade) {
