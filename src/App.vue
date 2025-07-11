@@ -82,54 +82,30 @@ function checkInputVariant(variant) {
     <div class="flex flex-col gap-4 h-dvh text-center">
       <!-- <Menubar :model="items"> -->
       <Menubar>
-        <template #start>
-          Bewertung Abschlussarbeit
-        </template>
+        <template #start> Bewertung Abschlussarbeit </template>
         <template #end>
           <div class="flex items-center gap-2">
             <p>{{ buttonToggleDarkMode }}</p>
             <ButtonLightDark v-model="buttonToggleDarkMode" />
-            <Button
-              icon="pi pi-refresh"
-              aria-label="Reset"
-              text
-              @click="reset"
-            />
+            <Button icon="pi pi-refresh" aria-label="Reset" text @click="reset" />
           </div>
         </template>
       </Menubar>
       <!-- </div> -->
       <div class="flex flex-row mx-4">
-        <div class="basis-full text-2xl text-gray-400/50">
-          Schriftliche Arbeit
-        </div>
+        <div class="basis-full text-2xl text-gray-400/50">Schriftliche Arbeit</div>
       </div>
       <div class="flex flex-row gap-4 mx-4">
         <div class="basis-1/3">
-          <label
-            for=""
-            class="inline-block pb-2"
-          >1. Gutachten</label>
-          <SelectGrade
-            v-model="gradeRating1"
-            @change="update"
-          />
+          <label for="" class="inline-block pb-2">1. Gutachten</label>
+          <SelectGrade v-model="gradeRating1" @change="update" />
         </div>
         <div class="basis-1/3">
-          <label
-            for=""
-            class="inline-block pb-2"
-          >2. Gutachten</label>
-          <SelectGrade
-            v-model="gradeRating2"
-            @change="update"
-          />
+          <label for="" class="inline-block pb-2">2. Gutachten</label>
+          <SelectGrade v-model="gradeRating2" @change="update" />
         </div>
         <div class="basis-1/4">
-          <label
-            for=""
-            class="inline-block pb-2"
-          >Note</label>
+          <label for="" class="inline-block pb-2">Note</label>
           <p class="font-bold text-3xl text-blue-500">
             {{ gradeWrittenThesis }}
           </p>
@@ -139,36 +115,19 @@ function checkInputVariant(variant) {
         </div>
       </div>
       <div class="flex flex-row mx-4">
-        <div class="basis-full text-2xl text-gray-500/50">
-          Verteidigung
-        </div>
+        <div class="basis-full text-2xl text-gray-500/50">Verteidigung</div>
       </div>
       <div class="flex flex-row gap-4 mx-4">
         <div class="basis-1/3">
-          <label
-            for=""
-            class="inline-block pb-2"
-          >Vortrag</label>
-          <SelectGrade
-            v-model="gradePresentation"
-            @change="update"
-          />
+          <label for="" class="inline-block pb-2">Vortrag</label>
+          <SelectGrade v-model="gradePresentation" @change="update" />
         </div>
         <div class="basis-1/3">
-          <label
-            for=""
-            class="inline-block pb-2"
-          >Diskussion</label>
-          <SelectGrade
-            v-model="gradeDiscussion"
-            @change="update"
-          />
+          <label for="" class="inline-block pb-2">Diskussion</label>
+          <SelectGrade v-model="gradeDiscussion" @change="update" />
         </div>
         <div class="basis-1/4">
-          <label
-            for=""
-            class="inline-block pb-2"
-          >Note</label>
+          <label for="" class="inline-block pb-2">Note</label>
           <p class="font-bold text-3xl text-orange-500">
             {{ gradeDefense }}
           </p>
@@ -178,9 +137,7 @@ function checkInputVariant(variant) {
         </div>
       </div>
       <div class="flex flex-row mx-4">
-        <div class="basis-full text-2xl text-gray-500/50">
-          Gesamtnote
-        </div>
+        <div class="basis-full text-2xl text-gray-500/50">Gesamtnote</div>
       </div>
       <div class="flex flex-row mx-4">
         <div class="basis-full">
@@ -191,19 +148,24 @@ function checkInputVariant(variant) {
           <p class="text-gray-500/50 mt-2">
             ({{ factorWrittenThesis }} ×
             <span class="text-blue-500">{{ gradeWrittenThesis }}</span> + {{ factorDefense }} ×
-            <span class="text-orange-500">{{ gradeDefense }}</span>) : {{ factorDivisor }} =
+            <span class="text-orange-500">{{ gradeDefense }}</span
+            >) : {{ factorDivisor }} =
             <span class="text-green-500">{{ gradeThesisCheck }}</span>
           </p>
-          <p class="text-xs text-gray-500/50 mt-2">
-            Angaben ohne Gewähr
-          </p>
+          <p class="text-xs text-gray-500/50 mt-2">Angaben ohne Gewähr</p>
         </div>
       </div>
-      <div class="flex flex-row flex-grow items-end mx-4 pb-4">
-        <SelectVariant
-          v-model="calcVariant"
-          @change="update"
-        />
+      <div class="flex flex-row flex-grow items-end mx-4">
+        <SelectVariant v-model="calcVariant" @change="update" />
+      </div>
+
+      <div class="flex flex-row mx-4">
+        <p class="basis-full text-xs text-gray-500/50 mb-2">
+          Notenrechner auf
+          <a class="underline" href="https://github.com/tigion/htwd-project-grade-calculator-vuejs"
+            >GitHub</a
+          >
+        </p>
       </div>
     </div>
   </div>
