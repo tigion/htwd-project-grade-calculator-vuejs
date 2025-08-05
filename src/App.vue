@@ -33,6 +33,7 @@ init()
 function init() {
   // Resets to initial values.
   reset()
+  // buttonToggleDarkMode.value = true
 }
 
 function reset() {
@@ -85,7 +86,6 @@ function checkInputVariant(variant) {
         <template #start> Bewertung Abschlussarbeit </template>
         <template #end>
           <div class="flex items-center gap-2">
-            <p>{{ buttonToggleDarkMode }}</p>
             <ButtonLightDark v-model="buttonToggleDarkMode" />
             <Button icon="pi pi-refresh" aria-label="Reset" text @click="reset" />
           </div>
