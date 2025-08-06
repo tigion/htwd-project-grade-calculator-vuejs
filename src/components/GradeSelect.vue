@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from 'vue'
 
+import Select from 'primevue/select'
+
 const defaultInputGrades = [1.0, 1.3, 1.7, 2.0, 2.3, 2.7, 3.0, 3.3, 3.7, 4.0, 5.0]
 
 const grades = ref(getInputGrades())
 const selectedGrade = ref()
 
+// Returns an array with grades and their localized names.
 function getInputGrades() {
   const grades = []
   defaultInputGrades.forEach((grade) => {
