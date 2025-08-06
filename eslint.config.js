@@ -1,45 +1,32 @@
-import { defineConfig } from 'eslint/config'
-import js from '@eslint/js'
+import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
-import eslintPluginVue from 'eslint-plugin-vue'
-import eslintConfigPrettier from 'eslint-config-prettier/flat'
+import js from '@eslint/js'
+import pluginVue from 'eslint-plugin-vue'
+import pluginVitest from '@vitest/eslint-plugin'
+import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 
 export default defineConfig([
   {
-    files: ['**/*.{js,mjs,cjs,vue}'],
-    plugins: { js },
-    extends: ['js/recommended']
+    name: 'app/files-to-lint',
+    files: ['**/*.{js,mjs,jsx,vue}'],
   },
+
+  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+
   {
-    files: ['**/*.js'],
     languageOptions: {
-      sourceType: 'commonjs'
-    }
-  },
-  {
-    files: ['**/*.{js,mjs,cjs,vue}'],
-    languageOptions: {
-      globals: globals.browser
-    }
+      globals: {
+        ...globals.browser,
+      },
+    },
   },
 
-  // Adds support for Vue.js.
-  // - https://github.com/vuejs/eslint-plugin-vue
-  eslintPluginVue.configs['flat/recommended'],
-
-  // Disables all rules that conflict with Prettier.
-  // - https://github.com/prettier/eslint-config-prettier
-  // Use ESLint only for linting and Prettier for formatting.
-  // - https://prettier.io/docs/comparison
-  eslintConfigPrettier,
-
-  // Overrides for specific rules.
+  js.configs.recommended,
+  ...pluginVue.configs['flat/essential'],
+  
   {
-    rules: {
-      'no-unused-vars': 'warn',
-      'no-undef': 'warn'
-      // 'vue/multi-word-component-names': 'off',
-      // 'vue/no-reserved-component-names': 'off'
-    }
-  }
+    ...pluginVitest.configs.recommended,
+    files: ['src/**/__tests__/*'],
+  },
+  skipFormatting,
 ])

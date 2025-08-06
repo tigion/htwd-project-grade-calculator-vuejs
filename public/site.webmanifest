@@ -1,6 +1,6 @@
 {
-  "name": "Notenrechner",
-  "short_name": "Notenrechner",
+  "name": "Grade Calculator",
+  "short_name": "Grade Calculator",
   "icons": [
     {
       "src": "img/icon-192x192.png",

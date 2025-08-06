@@ -1,55 +1,38 @@
-# vue-project
+# Grade Calculator
 
-This template should help get you started developing with Vue 3 in Vite.
+Web application for calculating the assessment of final theses.
+Optimized for mobile devices.
 
-## Recommended IDE Setup
+<!-- TODO: Add an screenshot. -->
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Calculation
 
-## Customize configuration
+| Partial Grade       |  Calculation                        |
+| ------------------- | ----------------------------------- |
+| Schriftliche Arbeit | `(1. Gutachten + 2. Gutachten) / 2` |
+| Verteidigung        | `(Vortrag + Diskussion) / 2`        |
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+| Final Grade                                |  Calculation                                   |
+| ------------------------------------------ | ---------------------------------------------- |
+| Informatik/Mathematik<br />(2/3 + 1/3)     | `(2x Schriftliche Arbeit + Verteidigung) / 3`  |
+| Wirtschaftswissenschaften<br />(3/4 + 1/4) | `(3x Schriftliche Arbeit + Verteidigung) / 4`  |
 
-## Project Setup
+> [!NOTE]
+> The calculation is performed as an integer, with three decimal places.
 
-```sh
-npm install
-```
+> [!NOTE]
+> For the partial grades (**Schriftliche Arbeit**, **Verteidigung** and
+> **Gesamtnoten**), everything after the first decimal place is cut off in the
+> result. The uncut result is displayed below the grades for control purposes.
 
-### Upgrade dependencies
+## Development
 
-```sh
-npm outdated
-npm update
-npm update --save-dev
-npm update --save
-```
+The project uses [Vue.js] with [PrimeVue] and [Tailwind CSS].
+The calculation is implemented in the JavaScript classes `Calculation` and
+`Grade`.
 
-### Compile and Hot-Reload for Development
+[Vue.js]: https://vuejs.org/
+[PrimeVue]: https://primevue.org/
+[Tailwind CSS]: https://tailwindcss.com/
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
-
-### Test with [Jest](https://jestjs.io/)
-
-```sh
-npm run test
-npm test
-```
-
-## Notes
-
-- <https://vueschool.io/articles/vuejs-tutorials/master-tailwindcss-4-for-vue/>
+For more details, see [DEVELOPMENT.md](./DEVELOPMENT.md)
