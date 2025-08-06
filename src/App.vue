@@ -103,7 +103,7 @@ function validateInputVariant(variant) {
         </template>
       </Menubar>
       <div class="flex flex-row mx-4">
-        <div class="basis-full text-2xl text-gray-400/50">Schriftliche Arbeit</div>
+        <div class="basis-full text-2xl text-gray-400/80">Schriftliche Arbeit</div>
       </div>
       <div class="flex flex-row gap-4 mx-4">
         <div class="basis-1/3">
@@ -116,16 +116,16 @@ function validateInputVariant(variant) {
         </div>
         <div class="basis-1/4">
           <label for="" class="inline-block pb-2">Note</label>
-          <p class="font-bold text-3xl text-blue-500">
+          <p class="font-bold text-3xl text-sky-500/90">
             {{ gradeWrittenThesis }}
           </p>
-          <p class="text-gray-500/50">
+          <p class="text-gray-400/60">
             {{ gradeWrittenThesisCheck }}
           </p>
         </div>
       </div>
       <div class="flex flex-row mx-4">
-        <div class="basis-full text-2xl text-gray-500/50">Verteidigung</div>
+        <div class="basis-full text-2xl text-gray-400/80">Verteidigung</div>
       </div>
       <div class="flex flex-row gap-4 mx-4">
         <div class="basis-1/3">
@@ -138,39 +138,39 @@ function validateInputVariant(variant) {
         </div>
         <div class="basis-1/4">
           <label for="" class="inline-block pb-2">Note</label>
-          <p class="font-bold text-3xl text-orange-500">
+          <p class="font-bold text-3xl text-orange-500/90">
             {{ gradeDefense }}
           </p>
-          <p class="text-gray-500/50">
+          <p class="text-gray-400/60">
             {{ gradeDefenseCheck }}
           </p>
         </div>
       </div>
       <div class="flex flex-row mx-4">
-        <div class="basis-full text-2xl text-gray-500/50">Gesamtnote</div>
+        <div class="basis-full text-2xl text-gray-400/80">Gesamtnote</div>
       </div>
       <div class="flex flex-row mx-4">
         <div class="basis-full">
-          <p class="font-bold text-4xl text-green-500">
+          <p class="font-bold text-5xl text-green-500/90">
             {{ gradeThesis }}
           </p>
-          <p>{{ gradeThesisAsText }}</p>
-          <p class="text-gray-500/50 mt-2">
+          <p class="mt-2">"{{ gradeThesisAsText }}"</p>
+          <p class="text-gray-400/60 mt-2">
             ({{ factorWrittenThesis }} ×
-            <span class="text-blue-500">{{ gradeWrittenThesis }}</span> + {{ factorDefense }} ×
-            <span class="text-orange-500">{{ gradeDefense }}</span
+            <span class="text-sky-500/90">{{ gradeWrittenThesis }}</span> + {{ factorDefense }} ×
+            <span class="text-orange-500/90">{{ gradeDefense }}</span
             >) : {{ factorDivisor }} =
-            <span class="text-green-500">{{ gradeThesisCheck }}</span>
+            <span class="text-green-500/90">{{ gradeThesisCheck }}</span>
           </p>
-          <p class="text-xs text-gray-500/50 mt-2">Angaben ohne Gewähr</p>
+          <p class="text-xs text-gray-400/50 mt-2">Angaben ohne Gewähr</p>
         </div>
       </div>
       <div class="flex flex-row flex-grow items-end mx-4">
         <VariantSelect v-model="calcVariant" @change="update" />
       </div>
       <div class="flex flex-row mx-4">
-        <p class="basis-full text-xs text-gray-500/50 mb-2">
-          Notenrechner auf
+        <p class="basis-full text-xs text-gray-400/60 mb-5">
+          Grade Calculator auf
           <a class="underline" href="https://github.com/tigion/htwd-project-grade-calculator-vuejs"
             >GitHub</a
           >
