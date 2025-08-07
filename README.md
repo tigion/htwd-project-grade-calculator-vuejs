@@ -39,9 +39,9 @@ For more details, see [DEVELOPMENT.md](./DEVELOPMENT.md)
 ## History
 
 - **vuejs**:
-  - 2025-08-07, v3: Vue.js v3, Vitest v3, PrimeVue v4, Tailwind CSS v4
-  - 2024-06-24, v3: Vue.js v3, Jest v29, PrimeVue v4, Tailwind CSS v3
+  - `2025-08-07`, v3: Vue.js v3, Vitest v3, PrimeVue v4, Tailwind CSS v4
+  - `2024-06-24`, v3: Vue.js v3, Jest v29, PrimeVue v4, Tailwind CSS v3
 - **js**:
-  - 2022-02-01, v2: JavaScript, HTML, Bootstrap (archived)
+  - `2022-02-01`, v2: JavaScript, HTML, Bootstrap (archived)
 - **php**:
-  - 2016-10-20, v1: PHP, jQuery, HTML, CSS (archived, private)
+  - `2016-10-20`, v1: PHP, jQuery, HTML, CSS (archived, private)
