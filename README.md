@@ -5,6 +5,8 @@ Optimized for mobile devices.
 
 <!-- TODO: Add an screenshot. -->
 
+![Screenshot](./screenshot.png)
+
 ## Calculation
 
 The calculation is performed as an integer, with three decimal places.
