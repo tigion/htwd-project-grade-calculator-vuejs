@@ -1,6 +1,6 @@
 # Development
 
-Some commands and notes to develop the project with Vue 3 in Vite.
+Some commands and tips for developing the project with Vue 3 in Vite.
 
 - Prerequisites: [Node.js](https://nodejs.org/) version 18.3 or higher
 
