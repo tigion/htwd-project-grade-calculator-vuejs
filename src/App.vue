@@ -9,8 +9,8 @@ import LightDarkModeToggleButton from './components/LightDarkModeToggleButton.vu
 import GradeSelect from './components/GradeSelect.vue'
 import VariantSelect from './components/VariantSelect.vue'
 
-// Imports the grade calculation class.
-import { Calculation } from './assets/js/Calculation.js'
+// Imports the grade calculation logic.
+import { Calculation } from './logic/Calculation.js'
 
 const lightDarkModeToggleButton = ref()
 

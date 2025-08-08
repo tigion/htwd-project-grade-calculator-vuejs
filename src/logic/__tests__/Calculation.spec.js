@@ -1,6 +1,6 @@
 import { describe, beforeEach, test, expect } from 'vitest'
 
-import { Calculation } from './Calculation.js'
+import { Calculation } from './../Calculation.js'
 
 describe('class Calculation', () => {
   // Test data variant 1

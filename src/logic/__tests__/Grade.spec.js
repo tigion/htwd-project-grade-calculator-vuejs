@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 
-import { Grade } from './Grade.js'
+import { Grade } from './../Grade.js'
 
 describe('class Grade', () => {
   test('Constructor / set', () => {
