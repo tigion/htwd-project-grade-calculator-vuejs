@@ -107,6 +107,7 @@ describe('class Calculation', () => {
 
   test('Constructor (no arguments)', () => {
     const calculation = new Calculation()
+
     expect(calculation.gradeRating1.value).toBe(0)
     expect(calculation.gradeRating2.value).toBe(0)
     expect(calculation.gradePresentation.value).toBe(0)
@@ -240,17 +241,29 @@ describe('class Calculation', () => {
 
   test('getGradeAsText()', () => {
     const calc = new Calculation()
-    expect(calc.getGradeAsText(999)).toBe(' - ')
-    expect(calc.getGradeAsText(1500)).toBe('Sehr gut')
-    expect(calc.getGradeAsText(2500)).toBe('Gut')
-    expect(calc.getGradeAsText(3500)).toBe('Befriedigend')
-    expect(calc.getGradeAsText(4000)).toBe('Ausreichend')
-    expect(calc.getGradeAsText(4001)).toBe('Nicht ausreichend')
+
+    const testData = [
+      { input: 999, output: ' - ' },
+      { input: 1000, output: 'Sehr gut' },
+      { input: 1500, output: 'Sehr gut' },
+      { input: 1501, output: 'Gut' },
+      { input: 2500, output: 'Gut' },
+      { input: 2501, output: 'Befriedigend' },
+      { input: 3500, output: 'Befriedigend' },
+      { input: 3501, output: 'Ausreichend' },
+      { input: 4000, output: 'Ausreichend' },
+      { input: 4001, output: 'Nicht ausreichend' }
+    ]
+
+    for (const test of testData) {
+      expect(calc.getGradeAsText(test.input)).toBe(test.output)
+    }
   })
 
   test('clone()', () => {
     // variant 1
     const clone1 = v1.example.clone()
+
     expect(clone1.variant).toBe(v1.output.variant)
     expect(clone1.gradeRating1.value).toBe(v1.output.gradeRating1)
     expect(clone1.gradeRating2.value).toBe(v1.output.gradeRating2)

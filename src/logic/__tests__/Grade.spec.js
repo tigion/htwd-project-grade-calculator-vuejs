@@ -3,156 +3,157 @@ import { describe, test, expect } from 'vitest'
 import { Grade } from './../Grade.js'
 
 describe('class Grade', () => {
-  test('Constructor / set', () => {
+  test('Constructor', () => {
     let grade = new Grade()
     expect(grade.value).toBe(0)
-    grade = new Grade(999)
-    expect(grade.value).toBe(0)
-    grade = new Grade(999.99)
-    expect(grade.value).toBe(0)
-    grade = new Grade(1000)
-    expect(grade.value).toBe(1000)
-    grade = new Grade(1000.99)
-    expect(grade.value).toBe(1000)
-    grade = new Grade(5000)
-    expect(grade.value).toBe(5000)
-    grade = new Grade(5001)
-    expect(grade.value).toBe(0)
+
+    const testData = [
+      { input: 999, output: 0 },
+      { input: 999.99, output: 0 },
+      { input: 1000, output: 1000 },
+      { input: 1000.99, output: 1000 },
+      { input: 5000, output: 5000 },
+      { input: 5001, output: 0 }
+    ]
+
+    for (const test of testData) {
+      grade = new Grade(test.input)
+      expect(grade.value).toBe(test.output)
+    }
   })
 
   test('value set / get', () => {
-    let grade = new Grade()
-    grade.value = 999
-    expect(grade.value).toBe(0)
-    grade.value = 999.99
-    expect(grade.value).toBe(0)
-    grade.value = 1000
-    expect(grade.value).toBe(1000)
-    grade.value = 1000.99
-    expect(grade.value).toBe(1000)
-    grade.value = 5000
-    expect(grade.value).toBe(5000)
-    grade.value = 5001
-    expect(grade.value).toBe(0)
+    const grade = new Grade()
+
+    const testData = [
+      { input: 999, output: 0 },
+      { input: 999.99, output: 0 },
+      { input: 1000, output: 1000 },
+      { input: 1000.99, output: 1000 },
+      { input: 5000, output: 5000 },
+      { input: 5001, output: 0 }
+    ]
+
+    for (const test of testData) {
+      grade.value = test.input
+      expect(grade.value).toBe(test.output)
+    }
   })
 
   test('valueShort get', () => {
-    let grade = new Grade()
-    expect(grade.valueShort).toBe(0)
-    grade.value = 999
-    expect(grade.valueShort).toBe(0)
-    grade.value = 1000
-    expect(grade.valueShort).toBe(1000)
-    grade.value = 1001
-    expect(grade.valueShort).toBe(1000)
-    grade.value = 1099
-    expect(grade.valueShort).toBe(1000)
-    grade.value = 1100
-    expect(grade.valueShort).toBe(1100)
-    grade.value = 4999
-    expect(grade.valueShort).toBe(4900)
-    grade.value = 5000
-    expect(grade.valueShort).toBe(5000)
-    grade.value = 5001
-    expect(grade.valueShort).toBe(0)
+    const grade = new Grade()
+
+    const testData = [
+      { input: 999, output: 0 },
+      { input: 1000, output: 1000 },
+      { input: 1001, output: 1000 },
+      { input: 1099, output: 1000 },
+      { input: 1100, output: 1100 },
+      { input: 4999, output: 4900 },
+      { input: 5000, output: 5000 },
+      { input: 5001, output: 0 }
+    ]
+
+    for (const test of testData) {
+      grade.value = test.input
+      expect(grade.valueShort).toBe(test.output)
+    }
   })
 
   test('valueAsString get', () => {
     const grade = new Grade()
-    expect(grade.valueAsString).toBe('0,000')
-    grade.value = 999
-    expect(grade.valueAsString).toBe('0,000')
-    grade.value = 1000
-    expect(grade.valueAsString).toBe('1,000')
-    grade.value = 1001
-    expect(grade.valueAsString).toBe('1,001')
-    grade.value = 1099
-    expect(grade.valueAsString).toBe('1,099')
-    grade.value = 1100
-    expect(grade.valueAsString).toBe('1,100')
-    grade.value = 4999
-    expect(grade.valueAsString).toBe('4,999')
-    grade.value = 5000
-    expect(grade.valueAsString).toBe('5,000')
-    grade.value = 5001
-    expect(grade.valueAsString).toBe('0,000')
+
+    const testData = [
+      { input: 999, output: '0,000' },
+      { input: 1000, output: '1,000' },
+      { input: 1001, output: '1,001' },
+      { input: 1099, output: '1,099' },
+      { input: 1100, output: '1,100' },
+      { input: 4999, output: '4,999' },
+      { input: 5000, output: '5,000' },
+      { input: 5001, output: '0,000' }
+    ]
+
+    for (const test of testData) {
+      grade.value = test.input
+      expect(grade.valueAsString).toBe(test.output)
+    }
   })
 
   test('valueShortAsString get', () => {
     const grade = new Grade()
-    expect(grade.valueShortAsString).toBe('0,0')
-    grade.value = 999
-    expect(grade.valueShortAsString).toBe('0,0')
-    grade.value = 1000
-    expect(grade.valueShortAsString).toBe('1,0')
-    grade.value = 1001
-    expect(grade.valueShortAsString).toBe('1,0')
-    grade.value = 1099
-    expect(grade.valueShortAsString).toBe('1,0')
-    grade.value = 1100
-    expect(grade.valueShortAsString).toBe('1,1')
-    grade.value = 4999
-    expect(grade.valueShortAsString).toBe('4,9')
-    grade.value = 5000
-    expect(grade.valueShortAsString).toBe('5,0')
-    grade.value = 5001
-    expect(grade.valueShortAsString).toBe('0,0')
+
+    const testData = [
+      { input: 999, output: '0,0' },
+      { input: 1000, output: '1,0' },
+      { input: 1001, output: '1,0' },
+      { input: 1099, output: '1,0' },
+      { input: 1100, output: '1,1' },
+      { input: 4999, output: '4,9' },
+      { input: 5000, output: '5,0' },
+      { input: 5001, output: '0,0' }
+    ]
+
+    for (const test of testData) {
+      grade.value = test.input
+      expect(grade.valueShortAsString).toBe(test.output)
+    }
   })
 
   test('convertToShort()', () => {
     const grade = new Grade()
-    expect(grade.convertToShort(0)).toBe(0)
-    expect(grade.convertToShort(9)).toBe(0)
-    expect(grade.convertToShort(99)).toBe(0)
-    expect(grade.convertToShort(999)).toBe(900)
-    expect(grade.convertToShort(9999)).toBe(9900)
-    expect(grade.convertToShort(99999)).toBe(99900)
+
+    const testData = [
+      { input: 0, output: 0 },
+      { input: 9, output: 0 },
+      { input: 99, output: 0 },
+      { input: 999, output: 900 },
+      { input: 9999, output: 9900 },
+      { input: 99999, output: 99900 }
+    ]
+
+    for (const test of testData) {
+      expect(grade.convertToShort(test.input)).toBe(test.output)
+    }
   })
 
   test('convertToString()', () => {
     const grade = new Grade()
-    expect(grade.convertToString(0)).toBe('0,0')
-    expect(grade.convertToString(0, true)).toBe('0,0')
-    expect(grade.convertToString(0, false)).toBe('0,000')
-    expect(grade.convertToString(99)).toBe('0,0')
-    expect(grade.convertToString(99, true)).toBe('0,0')
-    expect(grade.convertToString(99, false)).toBe('0,099')
-    expect(grade.convertToString(999)).toBe('0,9')
-    expect(grade.convertToString(999, true)).toBe('0,9')
-    expect(grade.convertToString(999, false)).toBe('0,999')
-    expect(grade.convertToString(1000)).toBe('1,0')
-    expect(grade.convertToString(1000, true)).toBe('1,0')
-    expect(grade.convertToString(1000, false)).toBe('1,000')
-    expect(grade.convertToString(1001)).toBe('1,0')
-    expect(grade.convertToString(1001, true)).toBe('1,0')
-    expect(grade.convertToString(1001, false)).toBe('1,001')
-    expect(grade.convertToString(1099)).toBe('1,0')
-    expect(grade.convertToString(1099, true)).toBe('1,0')
-    expect(grade.convertToString(1099, false)).toBe('1,099')
-    expect(grade.convertToString(1100)).toBe('1,1')
-    expect(grade.convertToString(1100, true)).toBe('1,1')
-    expect(grade.convertToString(1100, false)).toBe('1,100')
-    expect(grade.convertToString(4999)).toBe('4,9')
-    expect(grade.convertToString(4999, true)).toBe('4,9')
-    expect(grade.convertToString(4999, false)).toBe('4,999')
-    expect(grade.convertToString(5000)).toBe('5,0')
-    expect(grade.convertToString(5000, true)).toBe('5,0')
-    expect(grade.convertToString(5000, false)).toBe('5,000')
-    expect(grade.convertToString(5001)).toBe('5,0')
-    expect(grade.convertToString(5001, true)).toBe('5,0')
-    expect(grade.convertToString(5001, false)).toBe('5,001')
-    expect(grade.convertToString(99999)).toBe('99,9')
-    expect(grade.convertToString(99999, true)).toBe('99,9')
-    expect(grade.convertToString(99999, false)).toBe('99,999')
+
+    const testData = [
+      { input: 0, output: { short: '0,0', long: '0,000' } },
+      { input: 99, output: { short: '0,0', long: '0,099' } },
+      { input: 999, output: { short: '0,9', long: '0,999' } },
+      { input: 1000, output: { short: '1,0', long: '1,000' } },
+      { input: 1001, output: { short: '1,0', long: '1,001' } },
+      { input: 1099, output: { short: '1,0', long: '1,099' } },
+      { input: 1100, output: { short: '1,1', long: '1,100' } },
+      { input: 4999, output: { short: '4,9', long: '4,999' } },
+      { input: 5000, output: { short: '5,0', long: '5,000' } },
+      { input: 5001, output: { short: '5,0', long: '5,001' } },
+      { input: 99999, output: { short: '99,9', long: '99,999' } }
+    ]
+
+    for (const test of testData) {
+      expect(grade.convertToString(test.input)).toBe(test.output.short)
+      expect(grade.convertToString(test.input, true)).toBe(test.output.short)
+      expect(grade.convertToString(test.input, false)).toBe(test.output.long)
+    }
   })
 
   test('floatToInt()', () => {
-    expect(Grade.floatToInt(0)).toBe(0)
-    expect(Grade.floatToInt(1)).toBe(1000)
-    expect(Grade.floatToInt(1.2)).toBe(1200)
-    expect(Grade.floatToInt(1.23)).toBe(1230)
-    expect(Grade.floatToInt(1.234)).toBe(1234)
-    expect(Grade.floatToInt(1.2345)).toBe(1234)
-    expect(Grade.floatToInt(1.23456)).toBe(1234)
+    const testData = [
+      { input: 0, output: 0 },
+      { input: 1, output: 1000 },
+      { input: 1.2, output: 1200 },
+      { input: 1.23, output: 1230 },
+      { input: 1.234, output: 1234 },
+      { input: 1.2345, output: 1234 },
+      { input: 1.23456, output: 1234 }
+    ]
+
+    for (const test of testData) {
+      expect(Grade.floatToInt(test.input)).toBe(test.output)
+    }
   })
 })
