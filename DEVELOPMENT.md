@@ -55,6 +55,11 @@ npm run lint
 npx npm-check-updates
 
 # Updates the _package.json_ file to the latest versions.
+# Limit updates for a specific package.
+npx npm-check-updates -u --reject primevue
+npx npm-check-updates -u --target minor --filter primevue
+# Update all dependencies to the next minor or latest version.
+npx npm-check-updates -u --target minor
 npx npm-check-updates -u
 # Like `npx npm-check-updates -u`, but you choose interactive which versions to update.
 npx npm-check-updates -i
